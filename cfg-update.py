@@ -12,7 +12,7 @@ def config(push):
     push.run(task=netmiko_send_command, command_string = "sh run | begin line ")
     push.run(task=netmiko_send_command, command_string = "wr mem")
 
-host = input("Enter host name(811-SW1) : ")
+host = input("Enter host name(SITENUMBER-SW1) : ")
 
 devices = nr.filter((F(hostname__contains=(host))))
 
