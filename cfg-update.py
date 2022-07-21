@@ -16,10 +16,6 @@ host = input("Enter host name(811-SW1) : ")
 
 devices = nr.filter((F(hostname__contains=(host))))
 
-
-
-#devices = nr.filter(F(groups__any=["AS65000", "ISP", "EIGRP700"]))
-
 results = devices.run(task = config)
 
 print_title("Deploying Configuration")
