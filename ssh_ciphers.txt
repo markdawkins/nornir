@@ -65,3 +65,23 @@ Compare against defaults — see if the AES-CTR, HMAC-SHA2, or ECDH KEX algorith
 Adjust as needed using F5’s SSH customization guidance (K80425458).
 
 Let me know if you’d like help walking through the CLI commands or interpreting the output for your specific setup!
+
+
+
+
+
+
+
+
+
+### MOre commands##
+
+tmsh modify sys sshd ciphers "aes256-cbc,aes128-cbc,aes256-ctr,aes128-ctr"
+
+
+
+
+
+
+
+
