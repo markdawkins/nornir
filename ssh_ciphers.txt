@@ -1,0 +1,67 @@
+Supported SSH Ciphers on BIG-IP VE
+
+According to the F5 Security Target documentation for BIG-IP version 16.1.3.1 (SSLO ST, Dec 2023), the default SSH configuration includes the following:
+
+Transport encryption algorithms:
+
+AES-CBC-128
+
+AES-CBC-256
+
+AES-CTR-128
+
+AES-CTR-256
+
+Public-key authentication algorithms:
+
+ecdsa-sha2-nistp256
+
+ecdsa-sha2-nistp384
+
+Integrity (MAC) algorithms:
+
+hmac-sha1
+
+hmac-sha2-256
+
+Key exchange (KEX) methods:
+
+ecdh-sha2-nistp256
+
+ecdh-sha2-nistp384 
+fmv.se
+
+While this information comes from the security evaluation for version 16.1.3.1, it's a safe assumption that these defaults hold for subsequent versions in the 17.x series, unless explicitly changed by F5 in release notes.
+
+Default Configuration Snapshot
+Category	Default Algorithms on BIG-IP VE
+Transport Encryption	AES-CBC-128, AES-CBC-256, AES-CTR-128, AES-CTR-256
+Public-Key Auth	ECDSA with curves NIST P-256 and P-384
+Integrity (MAC)	HMAC-SHA1, HMAC-SHA2-256
+Key Exchange (KEX)	ECDH using NIST P-256 and P-384
+Can These Be Changed?
+
+Yes, the list of supported ciphers, MACs, and KEX algorithms can be modified. F5 provides guidance under article K80425458, which covers how to modify the SSH configuration (sshd_config) to allow or restrict specific algorithms 
+myF5
+.
+
+Additionally, community discussions (e.g., DevCentral) indicate that by default, only aes128-cbc and aes256-cbc may be enabled, suggesting configurations may vary by version or by administrative customization 
+F5 Community
+.
+
+What You Can Do Next
+
+Check your appliance version — confirm which TMOS version your VE is running (e.g., via tmsh show /sys version).
+
+List current SSH configuration:
+
+tmsh list /sys sshd
+
+
+or inspect /config/ssh/sshd_config directly.
+
+Compare against defaults — see if the AES-CTR, HMAC-SHA2, or ECDH KEX algorithms are present or have been customized.
+
+Adjust as needed using F5’s SSH customization guidance (K80425458).
+
+Let me know if you’d like help walking through the CLI commands or interpreting the output for your specific setup!
