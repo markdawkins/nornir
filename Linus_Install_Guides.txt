@@ -1,0 +1,96 @@
+#############Install guide for Favorite Programs on a linux box############
+
+1. Update Your System (Always do this first)
+Before installing any new software, it's good practice to update your package list.
+
+bash
+sudo apt update && sudo apt upgrade
+2. Install All Software at Once
+You can install all of your requested programs in a single command.
+
+bash
+sudo apt install wireshark filezilla qbittorrent chrome-browser code
+You will be prompted for your password. Note that typing the password is invisible (no asterisks * appear). Just type it and press Enter.
+
+3. Or, Install Them Individually:
+If you prefer to install them one by one, or need specific instructions for each, use the commands below.
+
+Individual Application Notes & Post-Install Steps
+1. Wireshark (Network Protocol Analyzer)
+Installation:
+
+bash
+sudo apt install wireshark
+Crucial Post-Installation Setup:
+During installation, a graphical configuration window may appear asking if non-superusers should be allowed to capture packets. Select "Yes".
+
+If you missed this window or it didn't appear, you must add your user to the wireshark group to use it without running as root (which is a security risk):
+
+bash
+sudo usermod -aG wireshark $USER
+You must completely log out of Ubuntu and log back in (or restart your computer) for this group change to take effect.
+
+2. FileZilla (FTP/SFTP Client)
+Installation:
+
+bash
+sudo apt install filezilla
+No special setup is required. You can find it in your applications menu and start transferring files immediately.
+
+3. Google Chrome (Web Browser)
+The chrome-browser package in the Ubuntu repos will install the official Google Chrome. The installation process will automatically:
+
+Download the latest Google Chrome .deb package.
+
+Add the official Google repository to your system's software sources (/etc/apt/sources.list.d).
+
+Install Chrome and set it up for automatic updates via apt.
+
+Installation:
+
+bash
+sudo apt install chrome-browser
+4. qBittorrent (BitTorrent Client)
+Installation:
+
+bash
+sudo apt install qbittorrent
+This installs the free, open-source, and full-featured version. No setup is required. Launch it from your application menu.
+
+5. Visual Studio Code (Code Editor)
+The package code refers to Microsoft's Visual Studio Code. Installing it will:
+
+Add Microsoft's official GPG key and repository to your system.
+
+Install the latest version of VS Code.
+
+Set it up for automatic updates.
+
+Installation:
+
+bash
+sudo apt install code
+Note: If you meant the full Visual Studio IDE (not Code), please be aware that it is not natively available for Linux. Your alternatives are:
+
+Visual Studio Code (what this guide installed) is a fantastic, lightweight, and extensible code editor.
+
+JetBrains Rider (for .NET applications).
+
+Running Windows Visual Studio in a virtual machine (like GNOME Boxes or VirtualBox).
+
+Summary & Quick Command
+To set up your entire development and utility environment on a fresh Ubuntu 24.04 system, just follow these three steps in the terminal:
+
+Update:
+
+bash
+sudo apt update && sudo apt upgrade -y
+Install Everything:
+
+bash
+sudo apt install wireshark filezilla qbittorrent chrome-browser code
+Configure Wireshark (then logout and back in!):
+
+bash
+sudo usermod -aG wireshark $USER
+>> Log out of your Ubuntu session and log back in to complete the Wireshark setup. <<
